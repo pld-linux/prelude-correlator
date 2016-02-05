@@ -2,14 +2,15 @@
 Summary:	Real time correlator of events received by Prelude Manager
 Summary(pl.UTF-8):	Narzędzie kojarzące w czasie rzeczywistym zdarzenia odebrane przez Prelude Managera
 Name:		prelude-correlator
-Version:	1.0.0
+Version:	1.2.6
 Release:	1
 License:	GPL v2+
 Group:		Applications/Networking
-Source0:	http://www.prelude-ids.com/download/releases/prelude-correlator/%{name}-%{version}.tar.gz
-# Source0-md5:	d66135ceba28cd6d06dbb29e2963012b
+#Source0Download: https://www.prelude-siem.org/projects/prelude/files
+Source0:	https://www.prelude-siem.org/attachments/download/409/%{name}-%{version}.tar.gz
+# Source0-md5:	ecb926178aafd3a7616f27a66b1c941d
 Source1:	%{name}.init
-URL:		http://www.prelude-ids.com/
+URL:		https://www.prelude-siem.org/
 BuildRequires:	python-devel
 BuildRequires:	python-setuptools >= 0.6-2.c11
 Requires(pre):	/usr/sbin/useradd
@@ -17,7 +18,7 @@ Requires(post):	/sbin/chkconfig
 Requires(preun):	/sbin/chkconfig
 Requires(preun):	/sbin/service
 Requires(postun):	/sbin/service
-Requires:	python-libprelude >= 0.9.24
+Requires:	python-libprelude >= %{version}
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -65,12 +66,12 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS README docs/sample-plugin
+%doc AUTHORS NEWS README
 %attr(700,root,root) %dir %{_sysconfdir}/%{name}
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}/%{name}.conf
 %attr(754,root,root) /etc/rc.d/init.d/%{name}
 %attr(755,root,root) %{_bindir}/%{name}
 %dir %{_var}/lib/%{name}
 %{_var}/lib/%{name}/*.dat
-%{py_sitescriptdir}/PreludeCorrelator
+%{py_sitescriptdir}/preludecorrelator
 %{py_sitescriptdir}/prelude_correlator-%{version}-py*.egg-info
