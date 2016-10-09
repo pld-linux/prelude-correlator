@@ -2,17 +2,19 @@
 Summary:	Real time correlator of events received by Prelude Manager
 Summary(pl.UTF-8):	Narzędzie kojarzące w czasie rzeczywistym zdarzenia odebrane przez Prelude Managera
 Name:		prelude-correlator
-Version:	1.2.6
+Version:	3.1.0
 Release:	1
 License:	GPL v2+
 Group:		Applications/Networking
 #Source0Download: https://www.prelude-siem.org/projects/prelude/files
-Source0:	https://www.prelude-siem.org/attachments/download/409/%{name}-%{version}.tar.gz
-# Source0-md5:	ecb926178aafd3a7616f27a66b1c941d
+Source0:	https://www.prelude-siem.org/attachments/download/723/%{name}-%{version}.tar.gz
+# Source0-md5:	9fe16a969afdb3ffbd682827547bcf66
 Source1:	%{name}.init
+Patch0:		%{name}-vardir.patch
 URL:		https://www.prelude-siem.org/
 BuildRequires:	python-devel
 BuildRequires:	python-setuptools >= 0.6-2.c11
+BuildRequires:	rpmbuild(macros) >= 1.714
 Requires(pre):	/usr/sbin/useradd
 Requires(post):	/sbin/chkconfig
 Requires(preun):	/sbin/chkconfig
@@ -40,13 +42,15 @@ określają potencjalną informację o celu poprzez zbiór reguł korelacji.
 
 %prep
 %setup -q
+%patch0 -p1
+
+%build
+%py_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__python} setup.py install \
-	-O1 \
-	--root=$RPM_BUILD_ROOT
+%py_install
 
 install -d $RPM_BUILD_ROOT/etc/rc.d/init.d
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/rc.d/init.d/%{name}
@@ -69,6 +73,10 @@ fi
 %doc AUTHORS NEWS README
 %attr(700,root,root) %dir %{_sysconfdir}/%{name}
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}/%{name}.conf
+%dir %{_sysconfdir}/%{name}/conf.d
+%dir %{_sysconfdir}/%{name}/rules
+%dir %{_sysconfdir}/%{name}/rules/python
+%{_sysconfdir}/%{name}/rules/python/*.py
 %attr(754,root,root) /etc/rc.d/init.d/%{name}
 %attr(755,root,root) %{_bindir}/%{name}
 %dir %{_var}/lib/%{name}
