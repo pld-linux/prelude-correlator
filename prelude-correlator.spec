@@ -2,13 +2,13 @@
 Summary:	Real time correlator of events received by Prelude Manager
 Summary(pl.UTF-8):	Narzędzie kojarzące w czasie rzeczywistym zdarzenia odebrane przez Prelude Managera
 Name:		prelude-correlator
-Version:	3.1.0
+Version:	4.1.1
 Release:	1
 License:	GPL v2+
 Group:		Applications/Networking
 #Source0Download: https://www.prelude-siem.org/projects/prelude/files
-Source0:	https://www.prelude-siem.org/attachments/download/723/%{name}-%{version}.tar.gz
-# Source0-md5:	9fe16a969afdb3ffbd682827547bcf66
+Source0:	https://www.prelude-siem.org/attachments/download/833/%{name}-%{version}.tar.gz
+# Source0-md5:	6f163fcd22c7a41d62a99dba37694e8c
 Source1:	%{name}.init
 Patch0:		%{name}-vardir.patch
 URL:		https://www.prelude-siem.org/
@@ -20,7 +20,6 @@ Requires(post):	/sbin/chkconfig
 Requires(preun):	/sbin/chkconfig
 Requires(preun):	/sbin/service
 Requires(postun):	/sbin/service
-Requires:	python-libprelude >= %{version}
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
