@@ -2,13 +2,13 @@
 Summary:	Real time correlator of events received by Prelude Manager
 Summary(pl.UTF-8):	Narzędzie kojarzące w czasie rzeczywistym zdarzenia odebrane przez Prelude Managera
 Name:		prelude-correlator
-Version:	4.1.1
+Version:	5.1.0
 Release:	1
 License:	GPL v2+
 Group:		Applications/Networking
 #Source0Download: https://www.prelude-siem.org/projects/prelude/files
-Source0:	https://www.prelude-siem.org/attachments/download/833/%{name}-%{version}.tar.gz
-# Source0-md5:	6f163fcd22c7a41d62a99dba37694e8c
+Source0:	https://www.prelude-siem.org/attachments/download/1173/%{name}-%{version}.tar.gz
+# Source0-md5:	0916b2391a35ed7a4808ba7c8656d833
 Source1:	%{name}.init
 Patch0:		%{name}-vardir.patch
 URL:		https://www.prelude-siem.org/

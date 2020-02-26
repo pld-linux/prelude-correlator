@@ -1,11 +1,11 @@
---- prelude-correlator-3.1.0/setup.py.orig	2016-09-15 08:49:24.000000000 +0200
-+++ prelude-correlator-3.1.0/setup.py	2016-10-09 21:20:48.087202251 +0200
-@@ -149,7 +149,7 @@
-         ("etc/prelude-correlator", ["prelude-correlator.conf"]),
-         ("etc/prelude-correlator/conf.d", ['data/conf.d/README']),
-         ("etc/prelude-correlator/rules/python", [os.path.join('rules',x) for x in os.listdir('rules') if x.endswith('.py')]),
--        ("var/lib/prelude-correlator/prelude-correlator", [os.path.join('rules',x) for x in os.listdir('rules') if x.endswith('.dat')])
-+        ("var/lib/prelude-correlator", [os.path.join('rules',x) for x in os.listdir('rules') if x.endswith('.dat')])
+--- prelude-correlator-5.1.0/setup.py.orig	2020-02-26 18:17:53.001101760 +0100
++++ prelude-correlator-5.1.0/setup.py	2020-02-26 18:19:21.977286402 +0100
+@@ -146,7 +146,7 @@
+         ("etc/prelude-correlator/rules/python", [
+             os.path.join('rules', x) for x in os.listdir('rules') if x.endswith('.py')
+         ]),
+-        ("var/lib/prelude-correlator/prelude-correlator", [
++        ("var/lib/prelude-correlator", [
+             os.path.join('rules', x) for x in os.listdir('rules') if x.endswith('.dat')
+         ])
      ],
- 
-     install_requires=["prelude >= 3.1.0"],
