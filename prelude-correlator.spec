@@ -13,7 +13,7 @@ Source1:	%{name}.init
 Patch0:		%{name}-vardir.patch
 URL:		https://www.prelude-siem.org/
 BuildRequires:	python-devel
-BuildRequires:	python-setuptools >= 0.6-2.c11
+BuildRequires:	python-setuptools >= 1:0.6-2.c11
 BuildRequires:	rpmbuild(macros) >= 1.714
 Requires(pre):	/usr/sbin/useradd
 Requires(post):	/sbin/chkconfig
