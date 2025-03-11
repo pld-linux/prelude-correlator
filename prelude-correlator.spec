@@ -2,7 +2,7 @@ Summary:	Real time correlator of events received by Prelude Manager
 Summary(pl.UTF-8):	Narzędzie kojarzące w czasie rzeczywistym zdarzenia odebrane przez Prelude Managera
 Name:		prelude-correlator
 Version:	5.2.0
-Release:	
+Release:	2
 License:	GPL v2+
 Group:		Applications/Networking
 #Source0Download: https://www.prelude-siem.org/projects/prelude/files
@@ -40,7 +40,7 @@ określają potencjalną informację o celu poprzez zbiór reguł korelacji.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P 0 -p1
 
 %build
 %py3_build
